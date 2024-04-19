@@ -6,6 +6,9 @@ SendMode, Input
 SetWorkingDir %A_ScriptDir%
 Loop %A_ScriptDir%\*.config
 files .= (( files <> "" ) ? "|" : "" ) A_LoopFileName
+SysGet, screenWidth, 0
+SysGet, screenHeight, 1
+centerX := (screenWidth // 2)
 
 Gui 1: add, Text,, Charger un réglage existant:
 Gui 1: add, ComboBox, Simple w320 r20 vScript, %files%
@@ -173,11 +176,32 @@ RandHold(10,30)
 Random, cooldown4, %Timer4min%, %Timer4%
 SetTimer, spell4, %cooldown4%
 }
+CoordMode, ToolTip, Screen
+ToolTip, AutoCompétences: ON, %centerX%, 0
+Sleep 5000
+ToolTip
 } else {
 SetTimer, spell1, Off
 SetTimer, spell2, Off
 SetTimer, spell3, Off
 SetTimer, spell4, Off
+CoordMode, ToolTip, Screen
+ToolTip, AutoCompétences: OFF, %centerX%, 0
+Sleep 5000
+ToolTip
+}
+return
+~t::
+if (ToggleF1 = 1) {
+ToggleF1 := 0
+SetTimer, spell1, Off
+SetTimer, spell2, Off
+SetTimer, spell3, Off
+SetTimer, spell4, Off
+CoordMode, ToolTip, Screen
+ToolTip, Retour en ville AutoCompétences: OFF, %centerX%, 0
+Sleep 5000
+ToolTip
 }
 return
 ~LShift::
