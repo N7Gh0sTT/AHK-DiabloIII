@@ -15,38 +15,32 @@ Gui 1: add, ComboBox, Simple w320 r20 vScript, %files%
 Gui 1: add, Button, h25 +Default gRunScript, Lancer
 Gui 1: add, Button,yp h25 x+75 gCreateNewConfig, Créer un nouveau fichier de configuration
 
-Gui 2: add, Tab2, w450 h200, Infos|Nom du réglage|Raccourcis|Cooldowns|Fin
-Gui 2: add, Text, x20 y40 w435 h150, Bienvenue dans mon script pour Diablo III.`n`nCe script permet de lancer automatiquement les sorts de votre choix quand vous appuyez sur F1.`nPour mettre en pause, rappuyez sur F1.
-Gui 2: Tab, Nom du réglage
-Gui 2: add, Text, x20 y50 , Définir le nom de votre réglage:
-Gui 2: add, Edit, x180 y47 w50 vSetting , 
-Gui 2: add, Text, x20 y120 , Lancer automatiquement la compétence clic gauche lors de l'appui sur Shift Gauche :
-Gui 2: add, Checkbox, x430 y120 vShiftClic ,
-Gui 2: Tab, Raccourcis
-Gui 2: add, Text, x20 y40 , Les touches en jeu de vos 4 compétences
-Gui 2: add, Text, x30 y70 , Compétence 1:
-Gui 2: add, Hotkey, x110 y67 w50 vKey1 , 
-Gui 2: add, Text, x205 y70 , Compétence 2:
-Gui 2: add, Hotkey, x285 y67 w50 vKey2 , 
-Gui 2: add, Text, x30 y100 , Compétence 3:
-Gui 2: add, Hotkey, x110 y97 w50 vKey3 , 
-Gui 2: add, Text, x205 y100 , Compétence 4:
-Gui 2: add, Hotkey, x285 y97 w50 vKey4 , 
-Gui 2: Tab, Cooldowns
-Gui 2: add, Text, x20 y40 , Les temps de recharge de vos compétences (en secondes).`nIl y a 30ms d'aléatoire sur les temps de recharge.`nExemple: si vous entrez 40, la compétence sera lancée toutes les 39,97-40 secondes.
-Gui 2: add, Text, x30 y90 , Compétence 1:
-Gui 2: add, Edit, x110 y87 w50 vTimer1 , 
-Gui 2: add, Text, x205 y90 , Compétence 2:
-Gui 2: add, Edit, x285 y87 w50 vTimer2 , 
-Gui 2: add, Text, x30 y120 , Compétence 3:
-Gui 2: add, Edit, x110 y117 w50 vTimer3 , 
-Gui 2: add, Text, x205 y120 , Compétence 4:
-Gui 2: add, Edit, x285 y117 w50 vTimer4 , 
-Gui 2: add, Text, x20 y160 , SI VOUS NE VOULEZ PAS QU'UNE COMPÉTENCE SOIT LANCÉE`nAUTOMATIQUEMENT ENTREZ 0
-Gui 2: Tab, Fin
-Gui 2: add, Text, x20 y40 , Raccourci pour quitter le script
-Gui 2: add, Hotkey, x205 y40 vExitKey , ^!Esc
-Gui 2: add, Button, gButtonDone, Valider
+Gui 2: add, Text, x20 y20 , Bienvenue dans mon script pour Diablo III.`n`nCe script permet de lancer automatiquement les sorts de votre choix quand vous appuyez sur F1. Pour mettre en pause, rappuyez sur F1.
+Gui 2: add, Text, x201 y90 , Définir le nom de votre réglage:
+Gui 2: add, Edit, x363 y86 w200 h20 vSetting ,
+Gui 2: add, Text, x20 y258 , Lancer automatiquement la compétence`nclic gauche lors de l'appui sur Shift Gauche :
+Gui 2: add, Checkbox, x235 y269 w20 h20 vShiftClic ,
+Gui 2: add, GroupBox, x20 y144 w320 h110 , Les touches en jeu de vos 4 compétences
+Gui 2: add, Text, x30 y180 , Compétence 1:
+Gui 2: add, Hotkey, x110 y177 w50 h20 vKey1 , 
+Gui 2: add, Text, x205 y180 , Compétence 2:
+Gui 2: add, Hotkey, x285 y177 w50 h20 vKey2 , 
+Gui 2: add, Text, x30 y210 , Compétence 3:
+Gui 2: add, Hotkey, x110 y207 w50 h20 vKey3 , 
+Gui 2: add, Text, x205 y210 , Compétence 4:
+Gui 2: add, Hotkey, x285 y207 w50 h20 vKey4 ,
+Gui 2: add, GroupBox, x350 y144 w415 h133 , Les temps de recharge de vos compétences (en secondes) 
+Gui 2: add, Text, x357 y235 , Il y a 30ms d'aléatoire sur les temps de recharge.`nExemple: si vous entrez 40, la compétence sera lancée toutes les 39,97-40 secondes.
+Gui 2: add, Text, x394 y180 , Compétence 1:
+Gui 2: add, Edit, x474 y177 w50 h20 vTimer1 , 
+Gui 2: add, Text, x569 y180 , Compétence 2:
+Gui 2: add, Edit, x649 y177 w50 h20 vTimer2 , 
+Gui 2: add, Text, x394 y210 , Compétence 3:
+Gui 2: add, Edit, x474 y207 w50 h20 vTimer3 , 
+Gui 2: add, Text, x569 y210 , Compétence 4:
+Gui 2: add, Edit, x649 y207 w50 h20 vTimer4 , 
+Gui 2: add, Text, x350 y280 , SI VOUS NE VOULEZ PAS QU'UNE COMPÉTENCE SOIT LANCÉE`nAUTOMATIQUEMENT ENTREZ 0
+Gui 2: add, Button, x665 y311 w100 h30 gButtonDone, Lancer le script
 
 IfNotExist, *.config
 {
@@ -71,8 +65,6 @@ RunScript:
     FileReadLine, Timer3, %Script%, 11
     FileReadLine, Timer4min, %Script%, 12
     FileReadLine, Timer4, %Script%, 13
-    FileReadLine, ExitKey, %Script%, 14
-    Hotkey, %ExitKey%, ExitSub
 	Gui 1: destroy
 return
 
@@ -136,8 +128,6 @@ FileAppend, %Timer3min%`n, %Setting%.config
 FileAppend, %Timer3%`n, %Setting%.config
 FileAppend, %Timer4min%`n, %Setting%.config
 FileAppend, %Timer4%`n, %Setting%.config
-FileAppend, %ExitKey%, %Setting%.config
-Hotkey, %ExitKey%, ExitSub
 return
 
 ToggleF1 := 0
@@ -178,7 +168,7 @@ SetTimer, spell4, %cooldown4%
 }
 CoordMode, ToolTip, Screen
 ToolTip, AutoCompétences: ON, %centerX%, 0
-Sleep 5000
+Sleep 3000
 ToolTip
 } else {
 SetTimer, spell1, Off
@@ -187,7 +177,7 @@ SetTimer, spell3, Off
 SetTimer, spell4, Off
 CoordMode, ToolTip, Screen
 ToolTip, AutoCompétences: OFF, %centerX%, 0
-Sleep 5000
+Sleep 3000
 ToolTip
 }
 return
@@ -200,7 +190,7 @@ SetTimer, spell3, Off
 SetTimer, spell4, Off
 CoordMode, ToolTip, Screen
 ToolTip, Retour en ville AutoCompétences: OFF, %centerX%, 0
-Sleep 5000
+Sleep 3000
 ToolTip
 }
 return
@@ -237,11 +227,6 @@ spell4:
 Send, {%Key4% Down}
 RandHold(10,30)
 Send, {%Key4% Up}
-return
-
-ExitSub:
-ExitApp
-
 return
 
 RandHold(x,y) {
